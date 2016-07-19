@@ -1,0 +1,8 @@
+SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/test.db'
+
+SQLALCHEMY_ECHO = False
+
+# Fill this in with random data
+SECRET_KEY = 
+
+DEBUG = False
