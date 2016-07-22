@@ -3,4 +3,4 @@ import models
 
 class ComicSchema(ma.ModelSchema):
     class Meta:
-        model = models.Comic
+        model = models.ComicModel
