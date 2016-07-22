@@ -1,16 +1,9 @@
-from flask import jsonify
 from flask_restful import Resource
 from models import ComicModel
 from schemas import ComicSchema
 from sqlalchemy.sql import func
 
-def json_response(f):
-    def wrap(*args, **kwargs):
-        status, data = f(*args, **kwargs)
-        resp = jsonify(data)
-        resp.status_code = status
-        return resp
-    return wrap
+from utils import json_response
 
 class ComicList(Resource):
     @json_response
