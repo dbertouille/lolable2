@@ -10,4 +10,4 @@ api.add_resource(Comic, '/comics/<string:id>', '/comics/<int:id>')
 api.add_resource(ConfigurationList, '/configuration')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(threaded=True)
