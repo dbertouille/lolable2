@@ -5,13 +5,15 @@ import 'rxjs/add/operator/toPromise';
 
 import { Configuration } from './configuration';
 
+import globals = require('./globals');
+
 @Injectable()
 export class ConfigurationService {
 
   constructor(private http: Http) {}
 
   getConfig() {
-    return this.http.get('http://127.0.0.1:5000/configuration')
+    return this.http.get(globals.wsurl + '/configuration')
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
