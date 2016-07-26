@@ -3,8 +3,6 @@ import { Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Configuration } from './configuration';
-
 import globals = require('./globals');
 
 @Injectable()
