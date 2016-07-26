@@ -22,6 +22,7 @@ import globals = require('./globals');
             <lol-comic></lol-comic>
         </div>
         <div id="footer">
+            {{footer}}
         </div>
     </div>
   `,
@@ -30,12 +31,16 @@ import globals = require('./globals');
 })
 
 export class AppComponent implements OnInit {
-  title = '';
-  logourl = globals.wsurl + "/static/logo.png";
+    title = '';
+    footer = '';
+    logourl = globals.wsurl + "/static/logo.png";
 
-  constructor(private configurationService: ConfigurationService) { }
+    constructor(private configurationService: ConfigurationService) { }
 
-  ngOnInit() {
-    this.configurationService.getTitle().then(title => this.title = title);
-  }
+    ngOnInit() {
+        this.configurationService.getConfig().then(cfg => {
+            this.title = cfg.find(item => item.key == 'title').value;
+            this.footer = cfg.find(item => item.key == 'footer').value;
+        });
+    }
 }

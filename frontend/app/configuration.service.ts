@@ -10,10 +10,10 @@ export class ConfigurationService {
 
   constructor(private http: Http) {}
 
-  getTitle() {
+  getConfig() {
     return this.http.get('http://127.0.0.1:5000/configuration')
       .toPromise()
-      .then(response => response.json().find(cfg => cfg.key == 'title').value)
+      .then(response => response.json())
       .catch(this.handleError);
   }
 
