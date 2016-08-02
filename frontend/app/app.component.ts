@@ -11,8 +11,10 @@ import globals = require('./globals');
   selector: 'lol-app',
   template:`
     <div id="main" align="center">
+        {{title}}
         <div id="header">
             <img src="{{logourl}}"/>
+        </div>
 	    <div id="topmenu">
             <md-button>About</md-button>
             <md-button>Archive</md-button>
@@ -39,8 +41,13 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.configurationService.getConfig().then(cfg => {
-            this.title = cfg.find(item => item.key == 'title').value;
-            this.footer = cfg.find(item => item.key == 'footer').value;
+            var item;
+            item  = cfg.find(item => item.key == 'title');
+            if (item !== undefined)
+                this.title = item.value;
+            item = cfg.find(item => item.key == 'footer');
+            if (item !== undefined)
+                this.footer = item.value;
         });
     }
 }
