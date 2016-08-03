@@ -21,8 +21,16 @@ export class LOLService {
         return this.get('configuration');
     }
 
+    getComic(id: int) {
+        return this.get('comics/' + id);
+    }
+
     getComicNewest() {
         return this.get('comics/newest');
+    }
+
+    getComicRandom() {
+        return this.get('comics/random');
     }
 
     private handleError(error: any) {
