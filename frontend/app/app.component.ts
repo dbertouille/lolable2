@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { ComicComponent } from './comic.component';
 
-import { ConfigurationService } from './configuration.service';
+import { LOLService } from './lol.service';
 
 import globals = require('./globals');
 
@@ -21,15 +22,16 @@ import globals = require('./globals');
             <md-button>Podcasts</md-button>
         </div>
         <div id="content">
-            <lol-comic></lol-comic>
+            <router-outlet></router-outlet>
         </div>
         <div id="footer">
             {{footer}}
         </div>
     </div>
   `,
-  providers: [ConfigurationService],
-  directives: [ComicComponent]
+  providers: [LOLService],
+  directives: [ROUTER_DIRECTIVES],
+  precompile: [ComicComponent],
 })
 
 export class AppComponent implements OnInit {
@@ -37,10 +39,10 @@ export class AppComponent implements OnInit {
     footer = '';
     logourl = globals.wsurl + "/static/logo.png";
 
-    constructor(private configurationService: ConfigurationService) { }
+    constructor(private lolService: LOLService) { }
 
     ngOnInit() {
-        this.configurationService.getConfig().then(cfg => {
+        this.lolService.getConfig().then(cfg => {
             var item;
             item  = cfg.find(item => item.key == 'title');
             if (item !== undefined)
