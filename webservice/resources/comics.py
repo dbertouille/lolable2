@@ -31,4 +31,6 @@ class Comic(Resource):
                   func.random()).limit(1).first()
         if comic is None:
             return 404, {}
-        return 200, ComicSchema().dump(comic).data
+        buf = ComicSchema().dump(comic).data
+        buf['path'] = 'comics/%d.png' % comic.id
+        return 200, buf

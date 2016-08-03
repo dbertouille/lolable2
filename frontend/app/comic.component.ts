@@ -3,11 +3,13 @@ import { OnInit } from '@angular/core';
 
 import { LOLService } from './lol.service';
 
+import globals = require('./globals');
+
 @Component({
     selector: 'lol-comic',
     template:`
         <div id="comic">
-            {{comic.title}}
+            <img src="{{wsurl + '/static/comics/' + comic.id + '.png'}}"/>
         </div>
 	    <div id="bottommenu">
             <md-button (click)="onClickFirst()">First</md-button>
@@ -21,6 +23,7 @@ import { LOLService } from './lol.service';
 })
 
 export class ComicComponent implements OnInit {
+    wsurl = globals.wsurl;
     latest = {};
     comic = {};
 
