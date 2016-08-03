@@ -9,29 +9,28 @@ import { LOLService } from './lol.service';
 import globals = require('./globals');
 
 @Component({
-  selector: 'lol-app',
-  template:`
-    <div id="main" align="center">
-        {{title}}
-        <div id="header">
-            <img src="{{logourl}}"/>
+    selector: 'lol-app',
+    template:`
+        <div id="main" align="center">
+            <div id="header">
+                <img src="{{logourl}}"/>
+            </div>
+            <div id="topmenu">
+                <md-button>About</md-button>
+                <md-button>Archive</md-button>
+                <md-button>Podcasts</md-button>
+            </div>
+            <div id="content">
+                <router-outlet></router-outlet>
+            </div>
+            <div id="footer">
+                {{footer}}
+            </div>
         </div>
-	    <div id="topmenu">
-            <md-button>About</md-button>
-            <md-button>Archive</md-button>
-            <md-button>Podcasts</md-button>
-        </div>
-        <div id="content">
-            <router-outlet></router-outlet>
-        </div>
-        <div id="footer">
-            {{footer}}
-        </div>
-    </div>
-  `,
-  providers: [LOLService],
-  directives: [ROUTER_DIRECTIVES],
-  precompile: [ComicComponent],
+    `,
+    providers: [LOLService],
+    directives: [ROUTER_DIRECTIVES],
+    precompile: [ComicComponent],
 })
 
 export class AppComponent implements OnInit {
