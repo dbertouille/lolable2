@@ -11,8 +11,7 @@ import { LOLService } from './lol.service';
         <div *ngIf="comics" id="archive">
             <table class="table table-striped"
               [mfData]="comics"
-              #mf="mfDataTable"
-              [mfRowsOnPage]="2">
+              #mf="mfDataTable">
                 <thead>
                     <th>
                         <mfDefaultSorter by="posted_date">
@@ -44,13 +43,6 @@ import { LOLService } from './lol.service';
                         </td>
                     </tr>
                 </tbody>
-                <tfoot>
-                <tr>
-                    <td colspan="3">
-                        <mfBootstrapPaginator [rowsOnPageSet]="[2,4,8]"></mfBootstrapPaginator>
-                    </td>
-                </tr>
-                </tfoot>
             </table>
         </div>
     `,
