@@ -11,17 +11,27 @@ import globals = require('./globals');
 
 @Component({
     selector: 'lol-app',
+    styles: [`
+        .topmenu {
+            background-color: black;
+            color: white;
+        }
+        .topmenu a {
+            color: white;
+            text-decoration: none;
+        }
+    `],
     template:`
         <div id="main" align="center">
             <div id="header">
-                <a href="/comics">
+                <a [routerLink]="['/comics']">
                     <img src="{{logourl}}"/>
                 </a>
             </div>
-            <div id="topmenu">
-                <md-button>About</md-button>
-                <md-button>Archive</md-button>
-                <md-button>Podcasts</md-button>
+            <div class="topmenu">
+                <a [routerLink]="['/about']">About</a>
+                <a [routerLink]="['/archive']">Archive</a>
+                <a [routerLink]="['/podcasts']">Podcasts</a>
             </div>
             <div id="content">
                 <router-outlet></router-outlet>
