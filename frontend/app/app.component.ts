@@ -14,7 +14,9 @@ import globals = require('./globals');
     template:`
         <div id="main" align="center">
             <div id="header">
-                <img src="{{logourl}}"/>
+                <a href="/comics">
+                    <img src="{{logourl}}"/>
+                </a>
             </div>
             <div id="topmenu">
                 <md-button>About</md-button>
