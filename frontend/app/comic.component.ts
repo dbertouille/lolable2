@@ -7,25 +7,40 @@ import globals = require('./globals');
 
 @Component({
     selector: 'lol-comic',
+    styles: [`
+        .comicmenu {
+            background-color: black;
+            color: white;
+        }
+        .comicmenuitem {
+            cursor: pointer;
+        }
+    `],
     template:`
         <div *ngIf="comic" id="comic">
             <img src="{{wsurl + '/static/comics/' + comic.id + '.png'}}"/>
-            <div id="comicmenu">
-                <md-button *ngIf="comic.id != 1" (click)="onClickFirst()">
+            <div class="comicmenu">
+                <md-button *ngIf="comic.id != 1"
+                  (click)="onClickFirst()"
+                  class="comicmenuitem">
                     First
                 </md-button>
-                <md-button *ngIf="comic.id != 1" (click)="onClickBack()">
+                <md-button *ngIf="comic.id != 1"
+                  (click)="onClickBack()"
+                  class="comicmenuitem">
                     Back
                 </md-button>
-                <md-button (click)="onClickRandom()">
+                <md-button (click)="onClickRandom()" class="comicmenuitem">
                     Random
                 </md-button>
                 <md-button *ngIf="comic.id != latest.id"
-                  (click)="onClickNext()">
+                  (click)="onClickNext()"
+                  class="comicmenuitem">
                     Next
                 </md-button>
                 <md-button *ngIf="comic.id != latest.id"
-                  (click)="onClickNewest()">
+                  (click)="onClickNewest()"
+                  class="comicmenuitem">
                     Newest
                 </md-button>
             </div>
