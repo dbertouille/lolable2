@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
+import { ArchiveComponent } from './archive.component';
 import { ComicComponent } from './comic.component';
 
 import { LOLService } from './lol.service';
@@ -30,7 +31,10 @@ import globals = require('./globals');
     `,
     providers: [LOLService],
     directives: [ROUTER_DIRECTIVES],
-    precompile: [ComicComponent],
+    precompile: [
+      ArchiveComponent,
+      ComicComponent
+    ],
 })
 
 export class AppComponent implements OnInit {

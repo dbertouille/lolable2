@@ -21,7 +21,11 @@ export class LOLService {
         return this.get('configuration');
     }
 
-    getComic(id: int) {
+    getComics() {
+        return this.get('comics')
+    }
+
+    getComic(id: number) {
         return this.get('comics/' + id);
     }
 
