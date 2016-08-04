@@ -8,26 +8,42 @@ import globals = require('./globals');
 @Component({
     selector: 'lol-comic',
     template:`
-        <div id="comic">
+        <div *ngIf="comic" id="comic">
             <img src="{{wsurl + '/static/comics/' + comic.id + '.png'}}"/>
-        </div>
-	    <div id="bottommenu">
-            <md-button (click)="onClickFirst()">First</md-button>
-            <md-button (click)="onClickBack()">Back</md-button>
-            <md-button (click)="onClickRandom()">Random</md-button>
-            <md-button (click)="onClickNext()">Next</md-button>
-            <md-button (click)="onClickNewest()">Newest</md-button>
+            <div id="comicmenu">
+                <md-button *ngIf="comic.id != 1" (click)="onClickFirst()">
+                    First
+                </md-button>
+                <md-button *ngIf="comic.id != 1" (click)="onClickBack()">
+                    Back
+                </md-button>
+                <md-button (click)="onClickRandom()">
+                    Random
+                </md-button>
+                <md-button *ngIf="comic.id != latest.id"
+                  (click)="onClickNext()">
+                    Next
+                </md-button>
+                <md-button *ngIf="comic.id != latest.id"
+                  (click)="onClickNewest()">
+                    Newest
+                </md-button>
+            </div>
         </div>
 
     `,
 })
 
+/*
+ * This class assumes all comics are in sequential order starting
+ * from 1. If we allow comics to be deleted, we may need to rework
+ * this (and the webservice)
+ */
 export class ComicComponent implements OnInit {
     wsurl = globals.wsurl;
-    latest = {};
-    comic = {};
+    latest = undefined;
+    comic = undefined;
 
-    /* The first comic ID may not always be 1 */
     first_id = 1;
 
     constructor(private lolService: LOLService) {}
