@@ -1,5 +1,14 @@
 from shared import db
 
+class BlogModel(db.Model):
+    __tablename__ = 'blog'
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String)
+    blog = db.Column(db.String)
+    posted_date = db.Column(db.DateTime)
+    comic_id = db.Column(db.Integer, db.ForeignKey('comic.id'))
+
 class ComicModel(db.Model):
     __tablename__ = 'comic'
 
