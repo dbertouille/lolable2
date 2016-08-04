@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
+import { AboutComponent } from './about.component';
 import { ArchiveComponent } from './archive.component';
 import { ComicComponent } from './comic.component';
 
@@ -44,6 +45,7 @@ import globals = require('./globals');
     providers: [LOLService],
     directives: [ROUTER_DIRECTIVES],
     precompile: [
+      AboutComponent,
       ArchiveComponent,
       ComicComponent
     ],
