@@ -7,7 +7,7 @@ class BlogModel(db.Model):
     title = db.Column(db.String)
     blog = db.Column(db.String)
     posted_date = db.Column(db.DateTime)
-    comic_id = db.Column(db.Integer, db.ForeignKey('comic.id'))
+    comic_id = db.Column(db.Integer, db.ForeignKey('comic.id'), unique=True)
 
 class ComicModel(db.Model):
     __tablename__ = 'comic'

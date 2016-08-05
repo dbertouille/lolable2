@@ -1,8 +1,11 @@
 from flask import Flask
 from flask_restful import Api
 
-from resources import Comic, ComicList, ConfigurationList
+from resources import *
 from shared import api, app
+
+api.add_resource(BlogList, '/blogs')
+api.add_resource(Blog, '/blogs/<int:blog_id>', '/comics/<int:comic_id>/blog')
 
 api.add_resource(ComicList, '/comics')
 api.add_resource(Comic, '/comics/<string:id>', '/comics/<int:id>')
