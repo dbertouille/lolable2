@@ -4,8 +4,21 @@ import { LOLService } from './lol.service';
 
 @Component({
     selector: 'lol-blog-entry',
+    styles: [`
+        .blog-entry {
+            border-radius: 25px;
+            border: 2px solid #000000;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            text-align: left;
+        }
+        .blog-entry-title {
+            font-weight: bold;
+        }
+    `],
     template:`
-        <div *ngIf="blog">
+        <div *ngIf="blog" class="blog-entry">
             <div class="blog-entry-title">
                 {{blog.title}}
             </div>

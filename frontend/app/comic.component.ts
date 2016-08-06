@@ -46,6 +46,7 @@ import globals = require('./globals');
                     Newest
                 </md-button>
             </div>
+            <div style="height:10px;"></div>
             <lol-blog-entry [selectedComic]="comic"></lol-blog-entry>
         </div>
 
