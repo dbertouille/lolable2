@@ -29,6 +29,10 @@ export class LOLService {
         return this.get('comics/' + id);
     }
 
+    getComicBlog(id: number) {
+        return this.get('comics/' + id + '/blog');
+    }
+
     getComicNewest() {
         return this.get('comics/newest');
     }
@@ -38,7 +42,10 @@ export class LOLService {
     }
 
     private handleError(error: any) {
-        console.error('An error occurred', error);
+        /* 404s are expected in some cases */
+        if (error.status != 404) {
+            console.error('An error occurred', error);
+        }
         return Promise.reject(error.message || error);
     }
 }

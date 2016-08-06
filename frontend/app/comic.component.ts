@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 
+import { BlogEntryComponent } from './blog-entry.component';
+
 import { LOLService } from './lol.service';
 
 import globals = require('./globals');
@@ -44,9 +46,11 @@ import globals = require('./globals');
                     Newest
                 </md-button>
             </div>
+            <lol-blog-entry [selectedComic]="comic"></lol-blog-entry>
         </div>
 
     `,
+    directives: [BlogEntryComponent],
 })
 
 /*
