@@ -5,10 +5,18 @@ import { DataTableDirectives } from 'angular2-datatable/datatable';
 
 import { LOLService } from './lol.service';
 
+import globals = require('./globals');
+
 @Component({
     selector: 'lol-archive',
+    styles: [`
+        #archive {
+            width: 900px;
+        }
+    `],
     template:`
         <div *ngIf="comics" id="archive">
+            <img src="{{bannerurl}}"/>
             <table class="table table-striped"
               [mfData]="comics"
               #mf="mfDataTable">
@@ -51,6 +59,7 @@ import { LOLService } from './lol.service';
 
 export class ArchiveComponent implements OnInit {
     comics = undefined;
+    bannerurl = globals.wsurl + "/static/banner_archive.png";
 
     constructor(private lolService: LOLService) {}
 

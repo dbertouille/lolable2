@@ -3,10 +3,18 @@ import { OnInit } from '@angular/core';
 
 import { LOLService } from './lol.service';
 
+import globals = require('./globals');
+
 @Component({
     selector: 'lol-about',
+    styles: [`
+        #about {
+            width: 900px;
+        }
+    `],
     template:`
         <div *ngIf="data" id="about">
+            <img src="{{bannerurl}}"/>
             <div [innerHTML]=data align="left">
             </div>
         </div>
@@ -15,6 +23,7 @@ import { LOLService } from './lol.service';
 
 export class AboutComponent implements OnInit {
     data = undefined;
+    bannerurl = globals.wsurl + "/static/banner_about.png";
 
     constructor(private lolService: LOLService) {}
 
