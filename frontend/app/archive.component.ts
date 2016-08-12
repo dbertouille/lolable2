@@ -36,7 +36,7 @@ import globals = require('./globals');
                 <tbody>
                     <tr *ngFor="let comic of mf.data">
                         <td>
-                            {{comic.posted_date}}
+                            {{comic.posted_date | date}}
                         </td>
                         <td>
                             {{comic.title}}
