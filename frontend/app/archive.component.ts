@@ -26,12 +26,6 @@ import globals = require('./globals');
                             Title
                         </mfDefaultSorter>
                     </th>
-                    <th>
-                        <mfDefaultSorter by="id">
-                            Rating
-                        </mfDefaultSorter>
-                    </th>
-
                 </thead>
                 <tbody>
                     <tr *ngFor="let comic of mf.data">
@@ -40,9 +34,6 @@ import globals = require('./globals');
                         </td>
                         <td>
                             {{comic.title}}
-                        </td>
-                        <td>
-                            TODO - Rating
                         </td>
                     </tr>
                 </tbody>

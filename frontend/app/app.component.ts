@@ -19,6 +19,7 @@ import globals = require('./globals');
         #main {
             width: 900px;
             background-color: white;
+            min-height: 100vh;
         }
         .topmenu {
             background-color: black;
