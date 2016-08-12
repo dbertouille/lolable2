@@ -7,11 +7,6 @@ import globals = require('./globals');
 
 @Component({
     selector: 'lol-about',
-    styles: [`
-        #about {
-            width: 900px;
-        }
-    `],
     template:`
         <div *ngIf="data" id="about">
             <img src="{{bannerurl}}"/>

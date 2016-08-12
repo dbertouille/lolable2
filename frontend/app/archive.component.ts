@@ -9,11 +9,6 @@ import globals = require('./globals');
 
 @Component({
     selector: 'lol-archive',
-    styles: [`
-        #archive {
-            width: 900px;
-        }
-    `],
     template:`
         <div *ngIf="comics" id="archive">
             <img src="{{bannerurl}}"/>

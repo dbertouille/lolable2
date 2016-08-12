@@ -13,6 +13,13 @@ import globals = require('./globals');
 @Component({
     selector: 'lol-app',
     styles: [`
+        #outer {
+            background-color: #303030;
+        }
+        #main {
+            width: 900px;
+            background-color: white;
+        }
         .topmenu {
             background-color: black;
             color: white;
@@ -23,22 +30,24 @@ import globals = require('./globals');
         }
     `],
     template:`
-        <div id="main" align="center">
-            <div id="header">
-                <a [routerLink]="['/comics']">
-                    <img src="{{logourl}}"/>
-                </a>
-            </div>
-            <div class="topmenu">
-                <a [routerLink]="['/about']">About</a>
-                <a [routerLink]="['/archive']">Archive</a>
-                <a [routerLink]="['/podcasts']">Podcasts</a>
-            </div>
-            <div id="content">
-                <router-outlet></router-outlet>
-            </div>
-            <div id="footer">
-                {{footer}}
+        <div id="outer" align="center">
+            <div id="main">
+                <div id="header">
+                    <a [routerLink]="['/comics']">
+                        <img src="{{logourl}}"/>
+                    </a>
+                </div>
+                <div class="topmenu">
+                    <a [routerLink]="['/about']">About</a>
+                    <a [routerLink]="['/archive']">Archive</a>
+                    <a [routerLink]="['/podcasts']">Podcasts</a>
+                </div>
+                <div id="content">
+                    <router-outlet></router-outlet>
+                </div>
+                <div id="footer">
+                    {{footer}}
+                </div>
             </div>
         </div>
     `,

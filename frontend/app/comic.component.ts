@@ -17,32 +17,40 @@ import globals = require('./globals');
         .comicmenuitem {
             cursor: pointer;
         }
+        .comicmenuitem.disabled {
+            color: gray;
+            cursor: default;
+        }
     `],
     template:`
         <div *ngIf="comic" id="comic">
             <img src="{{wsurl + '/static/comics/' + comic.id + '.png'}}"/>
             <div class="comicmenu">
-                <md-button *ngIf="comic.id != 1"
+                <md-button
                   (click)="onClickFirst()"
-                  class="comicmenuitem">
+                  class="comicmenuitem"
+                  [class.disabled]="comic.id == 1">
                     First
                 </md-button>
-                <md-button *ngIf="comic.id != 1"
+                <md-button
                   (click)="onClickBack()"
-                  class="comicmenuitem">
+                  class="comicmenuitem"
+                  [class.disabled]="comic.id == 1">
                     Back
                 </md-button>
                 <md-button (click)="onClickRandom()" class="comicmenuitem">
                     Random
                 </md-button>
-                <md-button *ngIf="comic.id != latest.id"
+                <md-button
                   (click)="onClickNext()"
-                  class="comicmenuitem">
+                  class="comicmenuitem"
+                  [class.disabled]="comic.id == latest.id">
                     Next
                 </md-button>
-                <md-button *ngIf="comic.id != latest.id"
+                <md-button
                   (click)="onClickNewest()"
-                  class="comicmenuitem">
+                  class="comicmenuitem"
+                  [class.disabled]="comic.id == latest.id">
                     Newest
                 </md-button>
             </div>

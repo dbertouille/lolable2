@@ -12,7 +12,6 @@ import { LOLService } from './lol.service';
             padding-bottom: 10px;
             padding-left: 10px;
             text-align: left;
-            width: 900px;
         }
         .blog-entry-title {
             font-weight: bold;
