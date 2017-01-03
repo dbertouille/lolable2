@@ -4,6 +4,8 @@ from flask_restful import Api
 from resources import *
 from shared import api, app
 
+api.add_resource(Authenticate, '/authenticate')
+
 api.add_resource(BlogList, '/blogs')
 api.add_resource(Blog, '/blogs/<int:blog_id>', '/comics/<int:comic_id>/blog')
 

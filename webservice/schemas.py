@@ -12,3 +12,7 @@ class ComicSchema(ma.ModelSchema):
 class ConfigurationSchema(ma.ModelSchema):
     class Meta:
         model = models.ConfigurationModel
+
+class UserSchema(ma.ModelSchema):
+    class Meta:
+        model = models.UserModel
