@@ -11,7 +11,7 @@ import globals = require('./globals');
     selector: 'lol-archive',
     template:`
         <div *ngIf="comics" id="archive">
-            <img src="{{bannerurl}}"/>
+            <img src="/static/banners/archive.png"/>
             <table class="table table-striped"
               [mfData]="comics"
               #mf="mfDataTable">
@@ -45,7 +45,6 @@ import globals = require('./globals');
 
 export class ArchiveComponent implements OnInit {
     comics = undefined;
-    bannerurl = globals.wsurl + "/static/banner_archive.png";
 
     constructor(private lolService: LOLService) {}
 

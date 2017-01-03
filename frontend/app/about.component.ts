@@ -9,7 +9,7 @@ import globals = require('./globals');
     selector: 'lol-about',
     template:`
         <div *ngIf="data" id="about">
-            <img src="{{bannerurl}}"/>
+            <img src="/static/banners/about.png"/>
             <div [innerHTML]=data align="left">
             </div>
         </div>
@@ -18,7 +18,6 @@ import globals = require('./globals');
 
 export class AboutComponent implements OnInit {
     data = undefined;
-    bannerurl = globals.wsurl + "/static/banner_about.png";
 
     constructor(private lolService: LOLService) {}
 

@@ -35,7 +35,7 @@ import globals = require('./globals');
             <div id="main">
                 <div id="header">
                     <a [routerLink]="['/comics']">
-                        <img src="{{logourl}}"/>
+                        <img src="/static/logo.png"/>
                     </a>
                 </div>
                 <div class="topmenu">
@@ -64,7 +64,6 @@ import globals = require('./globals');
 export class AppComponent implements OnInit {
     title = '';
     footer = '';
-    logourl = globals.wsurl + "/static/logo.png";
 
     constructor(private lolService: LOLService) { }
 
