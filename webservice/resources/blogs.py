@@ -6,8 +6,8 @@ from utils import json_response
 
 class BlogList(Resource):
     @json_response
-    def get(self, comic_id=None):
-        blogs = BlogModel.query.all()
+    def get(self):
+        blogs = BlogModel.query.filter(BlogModel.comic_id == None).all()
         return 200, BlogSchema(many=True).dump(blogs).data
 
 class Blog(Resource):

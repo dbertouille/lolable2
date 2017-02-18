@@ -14,8 +14,12 @@ import globals = require('./globals');
             background-color: black;
             color: white;
         }
+
         .comicmenuitem {
             cursor: pointer;
+            padding-left: 10px;
+            padding-right: 10px;
+        
         }
         .comicmenuitem.disabled {
             color: gray;

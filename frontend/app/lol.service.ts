@@ -17,6 +17,10 @@ export class LOLService {
           .catch(this.handleError);
     }
 
+    getBlogs() {
+        return this.get('blogs');
+    }
+
     getConfig() {
         return this.get('configuration');
     }

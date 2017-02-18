@@ -8,6 +8,8 @@ import { LOLService } from './lol.service';
         .blog-entry {
             border-radius: 25px;
             border: 2px solid #000000;
+            margin-left: 10px;
+            margin-right: 10px;
             padding-top: 10px;
             padding-bottom: 10px;
             padding-left: 10px;
@@ -34,6 +36,8 @@ export class BlogEntryComponent {
     comic = undefined;
 
     constructor(private lolService: LOLService) {}
+
+    @Input() blog;
 
     @Input()
     set selectedComic(selectedComic) {

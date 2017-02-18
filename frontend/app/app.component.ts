@@ -4,6 +4,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { AboutComponent } from './about.component';
 import { ArchiveComponent } from './archive.component';
+import { BlogComponent } from './blog.component';
 import { ComicComponent } from './comic.component';
 
 import { LOLService } from './lol.service';
@@ -28,6 +29,8 @@ import globals = require('./globals');
         .topmenu a {
             color: white;
             text-decoration: none;
+            padding-left: 10px;
+            padding-right: 10px;
         }
     `],
     template:`
@@ -39,6 +42,8 @@ import globals = require('./globals');
                     </a>
                 </div>
                 <div class="topmenu">
+                    <a [routerLink]="['/comics']">Comics</a>
+                    <a [routerLink]="['/blog']">Blog</a>
                     <a [routerLink]="['/about']">About</a>
                     <a [routerLink]="['/archive']">Archive</a>
                     <a [routerLink]="['/podcasts']">Podcasts</a>
@@ -57,6 +62,7 @@ import globals = require('./globals');
     precompile: [
       AboutComponent,
       ArchiveComponent,
+      BlogComponent,
       ComicComponent
     ],
 })
