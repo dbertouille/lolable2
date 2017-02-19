@@ -1,5 +1,7 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { BlogEntryComponent } from './blog-entry.component';
 
@@ -92,44 +94,52 @@ export class ComicComponent implements OnInit {
 
     first_id = 1;
 
-    constructor(private lolService: LOLService) {}
+    constructor(
+        private lolService: LOLService,
+        private route: ActivatedRoute,
+        private location: Location,
+    ) {}
 
     ngOnInit() {
         this.lolService.getComicNewest().then(comic => {
-            this.comic = comic;
             this.latest = comic;
+            this.sub = this.route.params.subscribe(params => {
+                var id = +params['id'];
+                if(isNaN(id) || id == undefined) {
+                    id = this.latest.id;
+                }
+                this.loadComic(id);
+            });
         });
     }
 
+    loadComic(id) {
+        this.lolService.getComic(id).then(comic => this.setComic(comic));
+    }
+
+    setComic(comic) {
+        this.comic = comic
+        this.location.replaceState("/comic/" + this.comic.id);
+    }
+    
+
     onClickFirst() {
-        if (this.comic.id == this.first_id)
-            return;
-        this.lolService.getComic(this.first_id)
-            .then(comic => this.comic = comic);
+        this.loadComic(this.first_id);)
     }
 
     onClickBack() {
-        if (this.comic.id == this.first_id)
-            return;
-        this.lolService.getComic(this.comic.id - 1)
-            .then(comic => this.comic = comic);
+        this.loadComic(Math.max(this.comic.id - 1, this.first_id));
     }
 
     onClickRandom() {
-        this.lolService.getComicRandom().then(comic => this.comic = comic);
+        this.lolService.getComicRandom().then(comic => this.setComic(comic));
     }
 
     onClickNext() {
-        if (this.comic.id == this.latest.id)
-            return;
-        this.lolService.getComic(this.comic.id + 1)
-            .then(comic => this.comic = comic);
+        this.loadComic(Math.min(this.comic.id + 1, this.latest.id));
     }
 
     onClickNewest() {
-        this.lolService.getComicNewest().then(comic => {
-            this.comic = comic;
-            this.latest = comic;
-        });
+        this.setComic(latest);
     }
 }

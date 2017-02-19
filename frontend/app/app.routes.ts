@@ -8,7 +8,7 @@ import { ComicComponent } from './comic.component';
 const routes: RouterConfig = [
     {
         path: '',
-        redirectTo: '/comics',
+        redirectTo: '/comic',
         pathMatch: 'full'
     },
     {
@@ -24,9 +24,13 @@ const routes: RouterConfig = [
         component: BlogComponent
     },
     {
-        path: 'comics',
+        path: 'comic',
         component: ComicComponent
     },
+    {
+        path : 'comic/:id',
+        component: ComicComponent
+    }
 ];
 
 export const appRouterProviders = [

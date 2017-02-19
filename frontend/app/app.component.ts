@@ -79,11 +79,11 @@ import globals = require('./globals');
             <div id="main">
                 <div id="header">
                     <div class="logo">
-                        <a class="textlogo" [routerLink]="['/comics']">Lolable</a>
+                        <a class="textlogo" [routerLink]="['/comic']">Lolable</a>
                     </div>
                     <div class="topmenu">
-                        <a [routerLink]="['/comics']">Comic</a>
-                        <a [routerLink]="['/podcasts']">Podcast</a>
+                        <a [routerLink]="['/comic']">Comic</a>
+                        <a [routerLink]="['/podcast']">Podcast</a>
                         <a [routerLink]="['/blog']">Blog</a>
                         <a>Store</a>
                     </div>
@@ -107,7 +107,9 @@ import globals = require('./globals');
             </div>
         </div>
     `,
-    providers: [LOLService],
+    providers: [
+        LOLService,
+    ],
     directives: [ROUTER_DIRECTIVES],
     precompile: [
       AboutComponent,
