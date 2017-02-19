@@ -1,0 +1,12 @@
+*.log
+*.pyc
+*.swp
+
+frontend/app/*.js
+frontend/app/*.js.map
+frontend/node_modules
+frontend/typings
+
+webservice/lolws.cfg
+webservice/static
+webservice/test.db
