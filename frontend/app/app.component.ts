@@ -43,16 +43,16 @@ import globals = require('./globals');
             position: absolute;
             bottom: 0;
             left: 150;
+            margin-bottom: 5px;
         }
         .topmenu a {
             float: left;
             color: black;
             text-decoration: none;
-            padding-left: 10px;
-            padding-right: 10px;
             font-size: 30px;
             font-weight: bold;
             border-bottom: 2px solid;
+            margin-left: 10px;
         }
 
         .socialmedia {
@@ -64,15 +64,21 @@ import globals = require('./globals');
         .socialmedia img {
             height: 15px;
         }
+
+        .socialmedia a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .socialmedia a:hover {
+            font-weight: bold;
+        }
     `],
     template:`
         <div id="outer" align="center">
             <div id="main">
                 <div id="header">
                     <div class="logo">
-                        <a [routerLink]="['/comics']">
-                            <img style="display:none;" src="/static/logo.png"/>
-                        </a>
                         <a class="textlogo" [routerLink]="['/comics']">Lolable</a>
                     </div>
                     <div class="topmenu">
