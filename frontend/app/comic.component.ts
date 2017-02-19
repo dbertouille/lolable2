@@ -10,25 +10,35 @@ import globals = require('./globals');
 @Component({
     selector: 'lol-comic',
     styles: [`
+        .comicimg {
+             border:1px solid #021a40;
+        }
+
         .comicmenu {
-            background-color: black;
-            color: white;
         }
 
         .comicmenuitem {
             cursor: pointer;
             padding-left: 10px;
             padding-right: 10px;
-        
+            font-size: 20px;
         }
+
+        .comicmenuitem:hover {
+            font-weight: bold;
+        }
+
         .comicmenuitem.disabled {
             color: gray;
             cursor: default;
         }
+        .comicmenuitem-spacer {
+            border: 1px solid #000000;
+        }
     `],
     template:`
         <div *ngIf="comic" id="comic">
-            <img src="{{wsurl + '/static/comics/' + comic.id + '.png'}}"/>
+            <img class="comicimg" src="{{wsurl + '/static/comics/' + comic.id + '.png'}}"/>
             <div class="comicmenu">
                 <md-button
                   (click)="onClickFirst()"
@@ -36,21 +46,25 @@ import globals = require('./globals');
                   [class.disabled]="comic.id == 1">
                     First
                 </md-button>
+                <span class="comicmenuitem-spacer"></span>
                 <md-button
                   (click)="onClickBack()"
                   class="comicmenuitem"
                   [class.disabled]="comic.id == 1">
                     Back
                 </md-button>
+                <span class="comicmenuitem-spacer"></span>
                 <md-button (click)="onClickRandom()" class="comicmenuitem">
                     Random
                 </md-button>
+                <span class="comicmenuitem-spacer"></span>
                 <md-button
                   (click)="onClickNext()"
                   class="comicmenuitem"
                   [class.disabled]="comic.id == latest.id">
                     Next
                 </md-button>
+                <span class="comicmenuitem-spacer"></span>
                 <md-button
                   (click)="onClickNewest()"
                   class="comicmenuitem"
