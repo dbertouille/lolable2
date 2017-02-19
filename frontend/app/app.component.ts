@@ -18,35 +18,79 @@ import globals = require('./globals');
             background-color: #303030;
         }
         #main {
+            background-color: #f7fc8f;
             width: 900px;
-            background-color: white;
             min-height: 100vh;
         }
-        .topmenu {
+        #header {
+            display; inline-block;
+            overflow: hidden;
+            position: relative;
+        }
+        .logo {
+            float:left;
+            padding: 5px;
             background-color: black;
-            color: white;
+        }
+        .textlogo {
+            color: #f7fc8f;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 40px;
+        }
+        .topmenu {
+            width:50%;
+            position: absolute;
+            bottom: 0;
+            left: 150;
         }
         .topmenu a {
-            color: white;
+            float: left;
+            color: black;
             text-decoration: none;
             padding-left: 10px;
             padding-right: 10px;
+            font-size: 30px;
+            font-weight: bold;
+            border-bottom: 2px solid;
+        }
+
+        .socialmedia {
+            margin-right: 10px;
+            margin-top: 10px;
+            float: right;
+        }
+
+        .socialmedia img {
+            height: 15px;
         }
     `],
     template:`
         <div id="outer" align="center">
             <div id="main">
                 <div id="header">
-                    <a [routerLink]="['/comics']">
-                        <img src="/static/logo.png"/>
-                    </a>
-                </div>
-                <div class="topmenu">
-                    <a [routerLink]="['/comics']">Comics</a>
-                    <a [routerLink]="['/blog']">Blog</a>
-                    <a [routerLink]="['/about']">About</a>
-                    <a [routerLink]="['/archive']">Archive</a>
-                    <a [routerLink]="['/podcasts']">Podcasts</a>
+                    <div class="logo">
+                        <a [routerLink]="['/comics']">
+                            <img style="display:none;" src="/static/logo.png"/>
+                        </a>
+                        <a class="textlogo" [routerLink]="['/comics']">Lolable</a>
+                    </div>
+                    <div class="topmenu">
+                        <a [routerLink]="['/comics']">Comic</a>
+                        <a [routerLink]="['/podcasts']">Podcast</a>
+                        <a [routerLink]="['/blog']">Blog</a>
+                        <a>Store</a>
+                    </div>
+                    <div class="socialmedia">
+                        <div class="socialmedia-item">
+                            <img src="static/icons/youtube.png"/>
+                            <a href="https://www.youtube.com/channel/UC7yfCL0Xns8k2Nrpvb63Ogg">@Lolable</a>
+                        </div>
+                        <div class="socialmedia-item">
+                            <img src="static/icons/facebook.png"/>
+                            <a href="https://www.facebook.com/lolablecomics/">@LolableComics</a>
+                        </div>
+                    </div>
                 </div>
                 <div id="content">
                     <router-outlet></router-outlet>
