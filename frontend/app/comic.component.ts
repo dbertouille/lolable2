@@ -126,7 +126,7 @@ export class ComicComponent implements OnInit {
     
 
     onClickFirst() {
-        this.loadComic(this.first_id);)
+        this.loadComic(this.first_id);
     }
 
     onClickBack() {
