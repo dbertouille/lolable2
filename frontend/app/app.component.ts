@@ -18,7 +18,8 @@ import globals = require('./globals');
             background-color: #303030;
         }
         #main {
-            background-color: #f7fc8f;
+            //background-color: #f7fc8f;
+            background-image: url('static/bg.jpg');
             width: 900px;
             min-height: 100vh;
         }
@@ -26,6 +27,8 @@ import globals = require('./globals');
             display; inline-block;
             overflow: hidden;
             position: relative;
+            border-bottom: 2px solid;
+            background-color:rgba(255, 255, 255, 0.5);
         }
         .logo {
             float:left;

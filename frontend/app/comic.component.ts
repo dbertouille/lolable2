@@ -13,10 +13,12 @@ import globals = require('./globals');
     selector: 'lol-comic',
     styles: [`
         .comicimg {
-             border:1px solid #021a40;
+            border:1px solid #021a40;
         }
 
         .comicmenu {
+            background-color: black;
+            color: white;
         }
 
         .comicmenuitem {
