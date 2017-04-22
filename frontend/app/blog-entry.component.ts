@@ -33,7 +33,6 @@ import { LOLService } from './lol.service';
 })
 
 export class BlogEntryComponent {
-    blog = undefined;
     comic = undefined;
 
     constructor(private lolService: LOLService) {}

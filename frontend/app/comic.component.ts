@@ -12,13 +12,21 @@ import globals = require('./globals');
 @Component({
     selector: 'lol-comic',
     styles: [`
-        .comicimg {
-            border:1px solid #021a40;
+        .comic-img-wrapper {
+            background-color: grey;
+        }
+
+        .comic-img {
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+            display: block;
         }
 
         .comicmenu {
             background-color: black;
             color: white;
+            text-align: center;
         }
 
         .comicmenuitem {
@@ -42,7 +50,9 @@ import globals = require('./globals');
     `],
     template:`
         <div *ngIf="comic" id="comic">
-            <img class="comicimg" src="{{wsurl + '/static/comics/' + comic.id + '.png'}}"/>
+            <div class="comic-img-wrapper">
+                <img class="comic-img" src="{{wsurl + '/static/comics/' + comic.id + '.png'}}"/>
+            </div>
             <div class="comicmenu">
                 <md-button
                   (click)="onClickFirst()"
@@ -93,13 +103,14 @@ export class ComicComponent implements OnInit {
     wsurl = globals.wsurl;
     latest = undefined;
     comic = undefined;
+    sub = undefined;
 
     first_id = 1;
 
     constructor(
         private lolService: LOLService,
         private route: ActivatedRoute,
-        private location: Location,
+        private location: Location
     ) {}
 
     ngOnInit() {
@@ -142,6 +153,6 @@ export class ComicComponent implements OnInit {
     }
 
     onClickNewest() {
-        this.setComic(latest);
+        this.setComic(this.latest);
     }
 }
