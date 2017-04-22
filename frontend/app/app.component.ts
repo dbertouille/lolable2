@@ -25,6 +25,7 @@ import globals = require('./globals');
             width: 100%;
         }
         .header-logo {
+            max-height: 100px;
         }
         .header-content {
             flex-grow: 100;
@@ -72,8 +73,8 @@ import globals = require('./globals');
     template:`
         <div class="main">
             <div class="header">
-                <div class="header-logo">
-                    <img src="static/logo.jpg"/>
+                <div>
+                    <img class="header-logo" src="static/logo.jpg"/>
                 </div>
                 <div class="header-content">
                     <div class="header-social">
