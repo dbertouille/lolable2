@@ -6,6 +6,8 @@ frontend/app/*.js
 frontend/app/*.js.map
 frontend/node_modules
 frontend/typings
+frontend/build
+frontend/config.properties
 
 webservice/lolws.cfg
 webservice/static
