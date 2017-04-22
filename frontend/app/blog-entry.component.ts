@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import {DomSanitizationService} from '@angular/platform-browser';
 
 import { LOLService } from './lol.service';
 
@@ -8,8 +9,8 @@ import { LOLService } from './lol.service';
         .blog-entry {
             border-radius: 25px;
             border: 2px solid #000000;
-            margin-left: 10px;
-            margin-right: 10px;
+            margin-left: 50px;
+            margin-right: 50px;
             padding-top: 10px;
             padding-bottom: 10px;
             padding-left: 10px;
@@ -18,15 +19,25 @@ import { LOLService } from './lol.service';
         }
         .blog-entry-title {
             font-weight: bold;
+            font-size: 24px;
+        }
+
+        :host >>> * {
+            display:block;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
         }
     `],
     template:`
-        <div *ngIf="blog" class="blog-entry">
+        <div *ngIf="blogTitle && blogContent" class="blog-entry">
             <div class="blog-entry-title">
-                {{blog.title}}
+                {{blogTitle}}
             </div>
-            <div class="blog-entry-data">
-                {{blog.blog}}
+            <div class="blog-entry-data" [innerHTML]="blogContent">
             </div>
         </div>
     `,
@@ -34,10 +45,16 @@ import { LOLService } from './lol.service';
 
 export class BlogEntryComponent {
     comic = undefined;
+    blogTitle = undefined;
+    blogContent = undefined;
 
-    constructor(private lolService: LOLService) {}
+    constructor(private lolService: LOLService, private sanitizer: DomSanitizationService) {}
 
-    @Input() blog;
+    @Input()
+    set blog(blog) {
+        this.blogTitle = blog.title;
+        this.blogContent = this.sanitizer.bypassSecurityTrustHtml(blog.blog);
+    }
 
     @Input()
     set selectedComic(selectedComic) {

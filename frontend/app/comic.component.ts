@@ -12,79 +12,92 @@ import globals = require('./globals');
 @Component({
     selector: 'lol-comic',
     styles: [`
-        .comic-img-wrapper {
-            background-color: grey;
+        .comic-wrapper {
+            margin-top: 20px;
         }
-
-        .comic-img {
+        .comic {
             width: 100%;
             max-width: 900px;
             margin: auto;
-            display: block;
         }
-
-        .comicmenu {
+        .comic-title-text {
+            font-weight: bold;
+            font-size: 2vmax;
+        }
+        .comic-img {
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            border: solid black 2px;
+        }
+        .comic-menu {
             background-color: black;
             color: white;
             text-align: center;
         }
-
-        .comicmenuitem {
+        .comic-menu-item {
             cursor: pointer;
             padding-left: 10px;
             padding-right: 10px;
             font-size: 20px;
         }
-
-        .comicmenuitem:hover {
+        .comic-menu-item:hover {
             font-weight: bold;
         }
-
-        .comicmenuitem.disabled {
+        .comic-menu-item.disabled {
             color: gray;
             cursor: default;
         }
-        .comicmenuitem-spacer {
+        .comic-menu-item-spacer {
             border: 1px solid #000000;
         }
     `],
     template:`
-        <div *ngIf="comic" id="comic">
-            <div class="comic-img-wrapper">
-                <img class="comic-img" src="{{wsurl + '/static/comics/' + comic.id + '.png'}}"/>
-            </div>
-            <div class="comicmenu">
-                <md-button
-                  (click)="onClickFirst()"
-                  class="comicmenuitem"
-                  [class.disabled]="comic.id == 1">
-                    First
-                </md-button>
-                <span class="comicmenuitem-spacer"></span>
-                <md-button
-                  (click)="onClickBack()"
-                  class="comicmenuitem"
-                  [class.disabled]="comic.id == 1">
-                    Back
-                </md-button>
-                <span class="comicmenuitem-spacer"></span>
-                <md-button (click)="onClickRandom()" class="comicmenuitem">
-                    Random
-                </md-button>
-                <span class="comicmenuitem-spacer"></span>
-                <md-button
-                  (click)="onClickNext()"
-                  class="comicmenuitem"
-                  [class.disabled]="comic.id == latest.id">
-                    Next
-                </md-button>
-                <span class="comicmenuitem-spacer"></span>
-                <md-button
-                  (click)="onClickNewest()"
-                  class="comicmenuitem"
-                  [class.disabled]="comic.id == latest.id">
-                    Newest
-                </md-button>
+        <div *ngIf="comic" class="comic-wrapper">
+            <div class="comic">
+                <div class="comic-title">
+                    <span class="comic-title-text">
+                    Issue #{{comic.id}}: {{comic.title}}
+                    </span>
+                </div>
+                <div class="comic-img-wrapper">
+                    <img class="comic-img" src="{{wsurl + '/static/comics/' + comic.id + '.png'}}"/>
+                </div>
+                <div class="comic-menu">
+                    <md-button
+                    (click)="onClickFirst()"
+                    class="comic-menu-item"
+                    [class.disabled]="comic.id == 1">
+                        First
+                    </md-button>
+                    <span class="comic-menu-item-spacer"></span>
+                    <md-button
+                    (click)="onClickBack()"
+                    class="comic-menu-item"
+                    [class.disabled]="comic.id == 1">
+                        Back
+                    </md-button>
+                    <span class="comic-menu-item-spacer"></span>
+                    <md-button (click)="onClickRandom()" class="comic-menu-item">
+                        Random
+                    </md-button>
+                    <span class="comic-menu-item-spacer"></span>
+                    <md-button
+                    (click)="onClickNext()"
+                    class="comic-menu-item"
+                    [class.disabled]="comic.id == latest.id">
+                        Next
+                    </md-button>
+                    <span class="comic-menu-item-spacer"></span>
+                    <md-button
+                    (click)="onClickNewest()"
+                    class="comic-menu-item"
+                    [class.disabled]="comic.id == latest.id">
+                        Newest
+                    </md-button>
+                </div>
             </div>
             <div style="height:10px;"></div>
             <lol-blog-entry [selectedComic]="comic"></lol-blog-entry>

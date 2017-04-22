@@ -30,17 +30,18 @@ import globals = require('./globals');
         .header-content {
             flex-grow: 100;
             position: relative;
+             background-color: black;
+             color: white;
         }
         .header-menu {
             position: absolute;
             bottom: 0;
-            background-color: black;
             width: 100%;
         }
         .header-menu a {
             color: white;
             text-decoration: none;
-            font-size: 30px;
+            font-size: 3vw;
             font-weight: bold;
             border-bottom: 2px solid;
             margin-left: 10px;
@@ -57,7 +58,7 @@ import globals = require('./globals');
         }
 
         .header-social a {
-            color: black;
+            color: white;
             text-decoration: none;
         }
 
@@ -67,6 +68,12 @@ import globals = require('./globals');
         .content {
             display: block;
             clear: left;
+        }
+
+        .footer {
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
         }
 
     `],
