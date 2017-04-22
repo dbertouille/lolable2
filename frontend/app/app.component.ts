@@ -23,6 +23,8 @@ import globals = require('./globals');
             display: flex;
             float: left
             width: 100%;
+            border-bottom: 2px solid black;
+            background-color: #303030;
         }
         .header-logo {
             max-height: 100px;
@@ -30,21 +32,24 @@ import globals = require('./globals');
         .header-content {
             flex-grow: 100;
             position: relative;
-             background-color: black;
-             color: white;
+
+            color: white;
+            margin-left: 5px;
         }
         .header-menu {
             position: absolute;
             bottom: 0;
-            width: 100%;
         }
         .header-menu a {
+            background-color: black;
             color: white;
             text-decoration: none;
             font-size: 3vw;
             font-weight: bold;
-            border-bottom: 2px solid;
-            margin-left: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 0.5em;
+            border-radius: 0.5em;
         }
 
         .header-social {
