@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {DomSanitizationService} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 
 import { LOLService } from './lol.service';
 
@@ -48,7 +48,7 @@ export class BlogEntryComponent {
     blogTitle = undefined;
     blogContent = undefined;
 
-    constructor(private lolService: LOLService, private sanitizer: DomSanitizationService) {}
+    constructor(private lolService: LOLService, private sanitizer: DomSanitizer) {}
 
     @Input()
     set blog(blog) {

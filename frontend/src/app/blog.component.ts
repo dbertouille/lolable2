@@ -21,7 +21,7 @@ import globals = require('./globals');
             </div>
         </div>
     `,
-    directives: [BlogEntryComponent],
+  //  directives: [BlogEntryComponent],
 })
 
 export class BlogComponent implements OnInit {

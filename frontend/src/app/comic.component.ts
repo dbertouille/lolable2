@@ -66,37 +66,37 @@ import globals = require('./globals');
                     <img class="comic-img" src="{{wsurl + '/static/comics/' + comic.id + '.png'}}"/>
                 </div>
                 <div class="comic-menu">
-                    <md-button
+                    <a
                     (click)="onClickFirst()"
                     class="comic-menu-item"
                     [class.disabled]="comic.id == 1">
                         First
-                    </md-button>
+                    </a>
                     <span class="comic-menu-item-spacer"></span>
-                    <md-button
+                    <a
                     (click)="onClickBack()"
                     class="comic-menu-item"
                     [class.disabled]="comic.id == 1">
                         Back
-                    </md-button>
+                    </a>
                     <span class="comic-menu-item-spacer"></span>
-                    <md-button (click)="onClickRandom()" class="comic-menu-item">
+                    <a (click)="onClickRandom()" class="comic-menu-item">
                         Random
-                    </md-button>
+                    </a>
                     <span class="comic-menu-item-spacer"></span>
-                    <md-button
+                    <a
                     (click)="onClickNext()"
                     class="comic-menu-item"
                     [class.disabled]="comic.id == latest.id">
                         Next
-                    </md-button>
+                    </a>
                     <span class="comic-menu-item-spacer"></span>
-                    <md-button
+                    <a
                     (click)="onClickNewest()"
                     class="comic-menu-item"
                     [class.disabled]="comic.id == latest.id">
                         Newest
-                    </md-button>
+                    </a>
                 </div>
             </div>
             <div style="height:10px;"></div>
@@ -104,7 +104,7 @@ import globals = require('./globals');
         </div>
 
     `,
-    directives: [BlogEntryComponent],
+  //  directives: [BlogEntryComponent],
 })
 
 /*
