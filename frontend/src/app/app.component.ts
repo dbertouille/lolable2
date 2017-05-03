@@ -39,7 +39,7 @@ import globals = require('./globals');
             bottom: 0;
         }
         .header-menu a {
-            background-color: black;
+            //background-color: black;
             color: white;
             text-decoration: none;
             font-size: 3vw;

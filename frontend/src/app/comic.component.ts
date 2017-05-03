@@ -22,7 +22,8 @@ import globals = require('./globals');
         }
         .comic-title-text {
             font-weight: bold;
-            font-size: 2vmax;
+            font-size: 24px;
+            margin-left: 10px;
         }
         .comic-img {
             width: 100%;

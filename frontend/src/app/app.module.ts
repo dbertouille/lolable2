@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes }  from '@angular/router';
+import { NgGridModule } from 'angular2-grid';
 
 import { AboutComponent } from './about.component';
 import { AppComponent } from './app.component';
 import { BlogComponent } from './blog.component';
 import { BlogEntryComponent } from './blog-entry.component';
 import { ComicComponent } from './comic.component';
+import { PodcastComponent } from './podcast.component';
 
 const appRoutes: Routes = [
     {
@@ -31,6 +33,10 @@ const appRoutes: Routes = [
     {
         path : 'comic/:id',
         component: ComicComponent
+    },
+    {
+        path : 'podcast',
+        component: PodcastComponent
     }
 ];
 
@@ -42,11 +48,13 @@ const appRoutes: Routes = [
     BlogComponent,
     BlogEntryComponent,
     ComicComponent,
+    PodcastComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+        NgGridModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [],
