@@ -12,3 +12,4 @@ frontend/config.properties
 webservice/lolws.cfg
 webservice/static
 webservice/test.db
+webservice/config.properties

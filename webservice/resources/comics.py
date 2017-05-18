@@ -1,3 +1,4 @@
+from flask import request
 from flask_restful import Resource
 from models import ComicModel
 from schemas import ComicSchema
@@ -8,7 +9,15 @@ from utils import json_response
 class ComicList(Resource):
     @json_response
     def get(self):
-        comics = ComicModel.query.all()
+        limit = request.args.get('limit')
+        if limit is None:
+            limit = 10
+
+        offset = request.args.get('offset')
+        if offset is None:
+            offset = 0
+
+        comics = ComicModel.query.order_by(ComicModel.id.desc()).limit(limit).offset(offset).all()
         return 200, ComicSchema(many=True).dump(comics).data
 
 class Comic(Resource):

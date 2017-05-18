@@ -22,6 +22,7 @@ interface Box {
     template:`
         <div [ngGrid]="gridOptions">
             <div *ngFor="let box of boxes" [(ngGridItem)]="box.config">
+                <img src="{{box.podcast.thumb}}" style="width:inherit;"/>
                 <p>{{box.podcast.name}}</p>
             </div>
         </div>
@@ -41,6 +42,8 @@ export class PodcastComponent implements OnInit {
             this.boxes[i] = {
                 podcast: {
                     name: "Podcast " + (i + 1),
+                    thumb: "https://img.youtube.com/vi/mQIhIF_i3QA/0.jpg",
+                    url: "",
                 },
                 config: {
                     'dragHandle': '.handle',

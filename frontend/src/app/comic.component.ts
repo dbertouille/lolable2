@@ -38,6 +38,14 @@ import globals = require('./globals');
             color: white;
             text-align: center;
         }
+        .comic-menu a {
+            color: white;
+            text-decoration: none;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 0.5em;
+            border-radius: 0.5em;
+        }
         .comic-menu-item {
             cursor: pointer;
             padding-left: 10px;
@@ -83,6 +91,10 @@ import globals = require('./globals');
                     <span class="comic-menu-item-spacer"></span>
                     <a (click)="onClickRandom()" class="comic-menu-item">
                         Random
+                    </a>
+                    <span class="comic-menu-item-spacer"></span>
+                    <a class="comic-menu-item" [routerLink]="['/archive']">
+                        Archive
                     </a>
                     <span class="comic-menu-item-spacer"></span>
                     <a

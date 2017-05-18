@@ -100,6 +100,7 @@ import globals = require('./globals');
                     <div class="header-menu">
                         <a [routerLink]="['/comic']">COMIC</a>
                         <a [routerLink]="['/podcast']">PODCAST</a>
+                        <a [routerLink]="['/archive']">ARCHIVE</a>
                         <a [routerLink]="['/blog']">BLOG</a>
                         <a>STORE</a>
                     </div>
