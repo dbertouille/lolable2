@@ -25,8 +25,19 @@ export class LOLService {
         return this.get('configuration');
     }
 
-    getComics() {
-        return this.get('comics')
+    getComics(limit=null, offset=null, search=null) {
+        let params = [];
+        var s = 'comics?';
+        if (limit !== null) {
+            params.push("limit=" + limit)
+        }
+        if (offset !== null) {
+            params.push("offset=" + offset)
+        }
+        if (search !== null) {
+            params.push("search=" + encodeURIComponent(search))
+        }
+        return this.get(s + params.join('&'));
     }
 
     getComic(id: number) {

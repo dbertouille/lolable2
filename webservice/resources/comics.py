@@ -17,7 +17,16 @@ class ComicList(Resource):
         if offset is None:
             offset = 0
 
-        comics = ComicModel.query.order_by(ComicModel.id.desc()).limit(limit).offset(offset).all()
+        search = request.args.get('search')
+        if search is None:
+            search = ''
+
+        comics = ComicModel.query                               \
+            .filter(ComicModel.title.like("%" + search + "%"))  \
+            .order_by(ComicModel.id.desc())                     \
+            .limit(limit)                                       \
+            .offset(offset)                                     \
+            .all()
         return 200, ComicSchema(many=True).dump(comics).data
 
 class Comic(Resource):
