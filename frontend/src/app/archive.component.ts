@@ -26,13 +26,17 @@ interface Box {
             font-size: 25px;
         }
         .archive {
+
             margin-top: 20px;
-            margin: auto;
         }
         .archive-item {
-            border-radius: 25px;
+           // border-radius: 25px;
             border: 2px solid #000000;
             background-color:rgba(255, 255, 255, 0.5);
+        }
+        .archive-item > p {
+            margin: 0px;
+            width: 100%;
         }
         .archive-item-type {
             background-color: black;
@@ -40,16 +44,8 @@ interface Box {
             text-align: center;
             font-weight: bold;
         }
-        .archive-item-title{
-            margin-left: 20px;
-        }
         .archive-item-img {
-            width: 250px;
-            height: 250px;
-            display: block;
-            margin: auto;
             object-fit:cover;
-            border: 2px solid #000000;
         }
         .archive-footer {
            text-align: center;
@@ -73,9 +69,8 @@ interface Box {
         </div>
         <div class="archive" [ngGrid]="gridOptions">
             <div class="archive-item" *ngFor="let box of boxes" [(ngGridItem)]="box.config">
-                <p class="archive-item-type"><b>{{box.content.type}}</b><p>
-                <p class="archive-item-title"><b>{{box.content.name}}</b></p>
-                <img class="archive-item-img" src="{{box.content.thumb}}"/>
+                <p class="archive-item-type" [style.height.px]="titleHeight"><b>{{box.content.type}}</b><p>
+                <img class="archive-item-img" src="{{box.content.thumb}}" [style.height.px]="imageSize" [style.width.px]="imageSize"/>
             </div>
         </div>
         <div class="archive-footer">
@@ -86,20 +81,30 @@ interface Box {
 
 export class ArchiveComponent implements OnInit {
     private wsurl = globals.wsurl;
-    private page = 1;
-    private pageSize = 8;
-    public atEnd = false;
-    private boxes: Array<Box> = [];
+
+    private searchText = "";
     private search = "";
-    public searchText = "";
+
+    private page = 1;
+    private pageSize = 5;
+    private imageSize = 0;
+    private minImageSize = 75;
+    private maxImageSize = 200;
+    private titleHeight = 20;
+    private boxes: Array<Box> = [];
+    private atEnd = false;
+    private mimMargin = 5;
+
     private gridOptions = {
         'draggable': false,
         'resizable': false,
         'limit_to_screen': true,
         'fix_to_grid': true,
-        'row_height': 370,
-        'col_width': 320,
-        'margins': [25],
+        'row_height': 0,
+        'col_width': 0,
+        'min_width': 0,
+        'min_height': 0,
+        'margins': [0],
         'cascade': "left",
     }
 
@@ -110,7 +115,11 @@ export class ArchiveComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        this.sizeTheThings();
         this.addNextPage();
+        window.onresize = (e) => {
+            this.sizeTheThings();
+        }
     }
 
     public addNextPage() {
@@ -137,8 +146,24 @@ export class ArchiveComponent implements OnInit {
         });
     }
 
+    public sizeTheThings() {
+        let width = document.querySelectorAll('.archive')[0].clientWidth;
+
+        this.imageSize = Math.floor(width / 3) - this.mimMargin * 2 - 4;
+        this.imageSize = Math.max(this.imageSize, this.minImageSize);
+        this.imageSize = Math.min(this.imageSize, this.maxImageSize);
+
+        // + 4 for borders
+        let itemWidth = this.imageSize + 4;
+        let nthings = Math.floor(width / (itemWidth + this.mimMargin * 2));
+        let margins = Math.floor(((width - (nthings * itemWidth)) / (nthings * 2)));
+
+        this.gridOptions['margins'] = [margins];
+        this.gridOptions['row_height'] = this.imageSize + this.titleHeight + 4;
+        this.gridOptions['col_width'] = this.imageSize + 4;
+    }
+
     public setSearch() {
-        console.log(this.searchText);
         if (this.search !== this.searchText) {
             this.search = this.searchText;
             this.page = 1;
