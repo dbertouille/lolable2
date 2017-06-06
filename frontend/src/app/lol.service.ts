@@ -56,6 +56,21 @@ export class LOLService {
         return this.get('comics/random');
     }
 
+    getArchive(limit=null, offset=null, search=null) {
+        let params = [];
+        var s = 'archive?';
+        if (limit !== null) {
+            params.push("limit=" + limit)
+        }
+        if (offset !== null) {
+            params.push("offset=" + offset)
+        }
+        if (search !== null) {
+            params.push("search=" + encodeURIComponent(search))
+        }
+        return this.get(s + params.join('&'));
+    }
+
     private handleError(error: any) {
         /* 404s are expected in some cases */
         if (error.status != 404) {

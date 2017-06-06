@@ -47,6 +47,9 @@ interface Box {
         .archive-item-img {
             object-fit:cover;
         }
+        .archive-item-img:hover {
+            cursor: pointer;
+        }
         .archive-footer {
            text-align: center;
         }
@@ -70,7 +73,7 @@ interface Box {
         <div class="archive" [ngGrid]="gridOptions">
             <div class="archive-item" *ngFor="let box of boxes" [(ngGridItem)]="box.config">
                 <p class="archive-item-type" [style.height.px]="titleHeight"><b>{{box.content.type}}</b><p>
-                <img class="archive-item-img" src="{{box.content.thumb}}" [style.height.px]="imageSize" [style.width.px]="imageSize"/>
+                <img class="archive-item-img" src="{{box.content.thumb}}" [style.height.px]="imageSize" [style.width.px]="imageSize" [routerLink]="[box.content.url]"/>
             </div>
         </div>
         <div class="archive-footer">
@@ -123,16 +126,27 @@ export class ArchiveComponent implements OnInit {
     }
 
     public addNextPage() {
-        this.lolService.getComics(this.pageSize, (this.page - 1) * this.pageSize, this.search).then(comics => {
+        this.lolService.getArchive(this.pageSize, (this.page - 1) * this.pageSize, this.search).then(comics => {
             comics.sort((a, b) => a.id < b.id ? 1 : a.id > b.id ? -1 : 0)
-            comics.forEach((comic, i) => {
+            comics.forEach((archive, i) => {
+                var content = {}
+                if (archive.item_type === "comic") {
+                    content = {
+                        type: "Comic",
+                        name: "Issue #" + archive.comic.id + ": " + archive.comic.title,
+                        thumb: this.wsurl + '/static/comics/' + archive.comic.id + '.png',
+                        url: "/comic/" + archive.comic.id,
+                    }
+                } else if (archive.item_type === "media") {
+                    content ={
+                        type: archive.media.media_type.charAt(0).toUpperCase() + archive.media.media_type.slice(1),
+                        name: archive.media.title,
+                        thumb: archive.media.thumb_url,
+                        url: archive.media.url,
+                    }
+                }
                 this.boxes.push({
-                    content: {
-                        type: "COMIC",
-                        name: "Issue #" + comic.id + ": " + comic.title,
-                        thumb: this.wsurl + '/static/comics/' + comic.id + '.png',
-                        url: "",
-                    },
+                    content: content,
                     config: {
                         col: i + 1,
                         row: 1
@@ -171,5 +185,9 @@ export class ArchiveComponent implements OnInit {
             this.boxes = [];
             this.addNextPage();
         }
+    }
+
+    public onArchiveClick(url) {
+        
     }
 }

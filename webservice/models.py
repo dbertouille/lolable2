@@ -2,6 +2,12 @@ import flask_scrypt
 
 from shared import db
 
+class ArchiveItemModel():
+    def __init__(self, item_type, data):
+        self.item_type = item_type
+        self.comic = data if item_type == 'comic' else None
+        self.media = data if item_type == 'media' else None
+
 class BlogModel(db.Model):
     __tablename__ = 'blog'
 
@@ -24,6 +30,16 @@ class ConfigurationModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     key = db.Column(db.String)
     value = db.Column(db.String)
+
+class MediaModel(db.Model):
+    __tablename__ = 'media'
+
+    id = db.Column(db.Integer, primary_key=True)
+    media_type = db.Column(db.String)
+    title = db.Column(db.String)
+    url = db.Column(db.String)
+    thumb_url = db.Column(db.String)
+    posted_date = db.Column(db.DateTime)
 
 class UserModel(db.Model):
     __tablename__ = 'user'

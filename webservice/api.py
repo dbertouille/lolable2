@@ -6,6 +6,8 @@ from shared import api, app
 
 api.add_resource(Authenticate, '/authenticate')
 
+api.add_resource(ArchiveList, '/archive')
+
 api.add_resource(BlogList, '/blogs')
 api.add_resource(Blog, '/blogs/<int:blog_id>', '/comics/<int:comic_id>/blog')
 
