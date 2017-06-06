@@ -101,7 +101,6 @@ import globals = require('./globals');
                         <a [routerLink]="['/comic']">COMIC</a>
                         <a [routerLink]="['/archive']">ARCHIVE</a>
                         <a [routerLink]="['/blog']">BLOG</a>
-                        <a>STORE</a>
                     </div>
                 </div>
             </div>
