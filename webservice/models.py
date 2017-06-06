@@ -1,6 +1,6 @@
 import flask_scrypt
 
-from shared import db
+from extensions import db
 
 class ArchiveItemModel():
     def __init__(self, item_type, data):

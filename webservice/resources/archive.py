@@ -5,7 +5,7 @@ from schemas import ArchiveItemSchema
 from sqlalchemy import text
 from sqlalchemy.sql import func
 
-from shared import db
+from extensions import db
 from utils import json_response
 
 class ArchiveList(Resource):

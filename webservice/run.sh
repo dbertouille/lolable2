@@ -1,3 +1,3 @@
 #!/bin/sh
 
-PYTHONPATH=. python api.py
+PYTHONPATH=. python app.py

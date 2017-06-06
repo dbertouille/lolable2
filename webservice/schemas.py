@@ -1,4 +1,4 @@
-from shared import ma
+from extensions import ma
 from marshmallow import fields
 import models
 

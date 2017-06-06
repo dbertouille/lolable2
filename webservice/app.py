@@ -1,8 +1,14 @@
 from flask import Flask
 from flask_restful import Api
+from flask_restful.utils import cors
+from extensions import *
+
+app = Flask('lolws')
+app.config.from_pyfile('lolws.cfg')
+api = Api(app, decorators=[cors.crossdomain(origin='*')])
+init_extensions(app)
 
 from resources import *
-from shared import api, app
 
 api.add_resource(Authenticate, '/authenticate')
 

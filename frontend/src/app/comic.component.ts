@@ -50,7 +50,7 @@ import globals = require('./globals');
             cursor: pointer;
             padding-left: 10px;
             padding-right: 10px;
-            font-size: 20px;
+            font-size: 2vw;
         }
         .comic-menu-item:hover {
             font-weight: bold;

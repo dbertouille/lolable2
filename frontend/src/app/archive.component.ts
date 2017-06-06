@@ -85,7 +85,7 @@ interface Box {
 export class ArchiveComponent implements OnInit {
     private wsurl = globals.wsurl;
 
-    private searchText = "";
+    public searchText = "";
     private search = "";
 
     private page = 1;
@@ -94,11 +94,11 @@ export class ArchiveComponent implements OnInit {
     private minImageSize = 75;
     private maxImageSize = 200;
     private titleHeight = 20;
-    private boxes: Array<Box> = [];
-    private atEnd = false;
+    public boxes: Array<Box> = [];
+    public atEnd = false;
     private mimMargin = 5;
 
-    private gridOptions = {
+    public gridOptions = {
         'draggable': false,
         'resizable': false,
         'limit_to_screen': true,

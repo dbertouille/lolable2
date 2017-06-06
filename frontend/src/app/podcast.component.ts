@@ -30,8 +30,8 @@ interface Box {
 })
 
 export class PodcastComponent implements OnInit {
-    private boxes: Array<Box> = [];
-    private gridOptions = {
+    public boxes: Array<Box> = [];
+    public gridOptions = {
         'limit_to_screen': true,
     }
 
