@@ -72,7 +72,7 @@ import globals = require('./globals');
                     </span>
                 </div>
                 <div class="comic-img-wrapper">
-                    <img class="comic-img" src="{{wsurl + '/static/comics/comic' + comic.id + '.jpg'}}"/>
+                    <img class="comic-img" src="{{wsurl + '/static/comics/comic' + pad(comic.id, 3) + '.jpg'}}"/>
                 </div>
                 <div class="comic-menu">
                     <a
@@ -180,5 +180,11 @@ export class ComicComponent implements OnInit {
 
     onClickNewest() {
         this.setComic(this.latest);
+    }
+
+    pad(num, size) {
+        var s = num+"";
+        while (s.length < size) s = "0" + s;
+        return s;
     }
 }

@@ -32,7 +32,7 @@ class ArchiveList(Resource):
             OFFSET :offset
         """)
 
-        result = db.engine.execute(sql, {'limit': limit, 'offset': offset})
+        result = db.engine.execute(sql, {'limit': int(limit), 'offset': int(offset)})
         items = []
         for row in result:
             data = None

@@ -134,7 +134,7 @@ export class ArchiveComponent implements OnInit {
                     content = {
                         type: "Comic",
                         name: "Issue #" + archive.comic.id + ": " + archive.comic.title,
-                        thumb: this.wsurl + '/static/comics/' + archive.comic.id + '.png',
+                        thumb: this.wsurl + '/static/comics/comic' + this.pad(archive.comic.id, 3) + '.jpg',
                         url: "/comic/" + archive.comic.id,
                     }
                 } else if (archive.item_type === "media") {
@@ -189,5 +189,12 @@ export class ArchiveComponent implements OnInit {
 
     public onArchiveClick(url) {
         
+    }
+
+
+    pad(num, size) {
+        var s = num+"";
+        while (s.length < size) s = "0" + s;
+        return s;
     }
 }
