@@ -89,7 +89,7 @@ export class ArchiveComponent implements OnInit {
     private search = "";
 
     private page = 1;
-    private pageSize = 5;
+    private pageSize = 20;
     private imageSize = 0;
     private minImageSize = 75;
     private maxImageSize = 200;
