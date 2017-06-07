@@ -12,8 +12,8 @@ class BlogModel(db.Model):
     __tablename__ = 'blog'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String)
-    blog = db.Column(db.String)
+    title = db.Column(db.String(128))
+    blog = db.Column(db.String(8096))
     posted_date = db.Column(db.DateTime)
     comic_id = db.Column(db.Integer, db.ForeignKey('comic.id'), unique=True)
 
@@ -21,33 +21,33 @@ class ComicModel(db.Model):
     __tablename__ = 'comic'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String)
+    title = db.Column(db.String(128))
     posted_date = db.Column(db.DateTime)
 
 class ConfigurationModel(db.Model):
     __tablename__ = 'configuration'
 
     id = db.Column(db.Integer, primary_key=True)
-    key = db.Column(db.String)
-    value = db.Column(db.String)
+    key = db.Column(db.String(128))
+    value = db.Column(db.String(256))
 
 class MediaModel(db.Model):
     __tablename__ = 'media'
 
     id = db.Column(db.Integer, primary_key=True)
-    media_type = db.Column(db.String)
-    title = db.Column(db.String)
-    url = db.Column(db.String)
-    thumb_url = db.Column(db.String)
+    media_type = db.Column(db.String(128))
+    title = db.Column(db.String(128))
+    url = db.Column(db.String(1024))
+    thumb_url = db.Column(db.String(1024))
     posted_date = db.Column(db.DateTime)
 
 class UserModel(db.Model):
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String, unique=True)
-    passhash = db.Column(db.String)
-    passsalt = db.Column(db.String)
+    username = db.Column(db.String(128), unique=True)
+    passhash = db.Column(db.String(256))
+    passsalt = db.Column(db.String(256))
     admin = db.Column(db.Boolean)
 
     def set_password(self, ptext):

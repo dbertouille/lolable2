@@ -72,7 +72,7 @@ import globals = require('./globals');
                     </span>
                 </div>
                 <div class="comic-img-wrapper">
-                    <img class="comic-img" src="{{wsurl + '/static/comics/' + comic.id + '.png'}}"/>
+                    <img class="comic-img" src="{{wsurl + '/static/comics/comic' + comic.id + '.jpg'}}"/>
                 </div>
                 <div class="comic-menu">
                     <a
