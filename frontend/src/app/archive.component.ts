@@ -126,9 +126,8 @@ export class ArchiveComponent implements OnInit {
     }
 
     public addNextPage() {
-        this.lolService.getArchive(this.pageSize, (this.page - 1) * this.pageSize, this.search).then(comics => {
-            comics.sort((a, b) => a.id < b.id ? 1 : a.id > b.id ? -1 : 0)
-            comics.forEach((archive, i) => {
+        this.lolService.getArchive(this.pageSize, (this.page - 1) * this.pageSize, this.search).then(archives => {
+            archives.forEach((archive, i) => {
                 var content = {}
                 if (archive.item_type === "comic") {
                     content = {
@@ -153,7 +152,7 @@ export class ArchiveComponent implements OnInit {
                     }
                 });
             });
-            if (comics.length < this.pageSize) {
+            if (archives.length < this.pageSize) {
                 this.atEnd = true;
             }
             this.page++;
