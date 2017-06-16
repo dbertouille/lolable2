@@ -17,8 +17,16 @@ export class LOLService {
           .catch(this.handleError);
     }
 
-    getBlogs() {
-        return this.get('blogs');
+    getBlogs(limit=null, offset=null) {
+        let params = [];
+        var s = 'blogs?';
+        if (limit !== null) {
+            params.push("limit=" + limit)
+        }
+        if (offset !== null) {
+            params.push("offset=" + offset)
+        }
+        return this.get(s + params.join('&'));
     }
 
     getConfig() {

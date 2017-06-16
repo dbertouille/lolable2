@@ -77,6 +77,7 @@ import globals = require('./globals');
             width: 100%;
             margin-top: 20px;
             text-align: center;
+            min-height: 20px;
         }
 
     `],

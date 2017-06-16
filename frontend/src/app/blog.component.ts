@@ -13,6 +13,15 @@ import globals = require('./globals');
         .blog-entry-wrapper {
             margin-top: 15px;
         }
+        .blog-footer {
+           text-align: center;
+        }
+        .blog-footer button {
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+        }
     `],
     template:`
         <div *ngIf="blogs" id="blogs">
@@ -20,15 +29,30 @@ import globals = require('./globals');
                 <lol-blog-entry [blog]="blog"></lol-blog-entry>
             </div>
         </div>
+        <div class="blog-footer">
+            <button (click)="getNextChunk()">Load More</button>
+        </div>
     `,
 })
 
 export class BlogComponent implements OnInit {
-    blogs = undefined;
+    private page = 1;
+    private pageSize = 10;
+
+    public blogs = [];
 
     constructor(private lolService: LOLService) {}
 
     ngOnInit() {
-        this.lolService.getBlogs().then(blogs => this.blogs = blogs);
+        this.getNextChunk();
+    }
+
+    getNextChunk() {
+        this.lolService.getBlogs(this.pageSize, (this.page - 1) * this.pageSize).then(blogs => {
+            blogs.forEach((blog, i) => {
+                this.blogs.push(blog);
+            });
+        });
+        this.page++;
     }
 }
