@@ -22,7 +22,7 @@ import globals = require('./globals');
         }
         .comic-title-text {
             font-weight: bold;
-            font-size: 24px;
+            font-size: 3vw;
             margin-left: 10px;
         }
         .comic-img {
@@ -60,7 +60,7 @@ import globals = require('./globals');
             cursor: default;
         }
         .comic-menu-item-spacer {
-            border: 1px solid #000000;
+           // border: 1px solid #000000;
         }
     `],
     template:`
