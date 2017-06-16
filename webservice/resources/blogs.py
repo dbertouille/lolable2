@@ -1,3 +1,4 @@
+from flask import request
 from flask_restful import Resource
 from models import BlogModel
 from schemas import BlogSchema
@@ -7,7 +8,20 @@ from utils import json_response
 class BlogList(Resource):
     @json_response
     def get(self):
-        blogs = BlogModel.query.filter(BlogModel.comic_id == None).all()
+        limit = request.args.get('limit')
+        if limit is None:
+            limit = 10
+
+        offset = request.args.get('offset')
+        if offset is None:
+            offset = 0
+
+        blogs = BlogModel.query.filter(BlogModel.comic_id == None)  \
+            .order_by(BlogModel.id.desc())                          \
+            .limit(limit)                                           \
+            .offset(offset)                                         \
+            .all()
+
         return 200, BlogSchema(many=True).dump(blogs).data
 
 class Blog(Resource):
