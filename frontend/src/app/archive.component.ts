@@ -17,12 +17,17 @@ interface Box {
     styles: [`
         .search {
             font-weight: bold;
-            margin-right: 50px;
             margin-top: 20px;
+            margin-right: 10px;
             text-align: right;
+            display: block;
         }
         .search input {
-            max-width: 75%;
+            max-width: 60%;
+        }
+
+        .search > * {
+            display: inline-block;
         }
 
         .archive {
@@ -61,13 +66,17 @@ interface Box {
     `],
     template:`
         <div class="search title">
-            <label>
-                Search
-               <input class="title" type="text" [value]="searchText" (keyup.enter)="setSearch()" (input)="searchText = $event.target.value"/>
-            </label>
-            <button (click)="setSearch()">
-                <i class="fa fa-search"></i>
-            </button>
+            <div>
+                <label>
+                    Search
+                <input class="title" type="text" [value]="searchText" (keyup.enter)="setSearch()" (input)="searchText = $event.target.value"/>
+                </label>
+            </div>
+            <div>
+                <button (click)="setSearch()">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
         </div>
         <div class="archive" [ngGrid]="gridOptions">
             <div class="archive-item" *ngFor="let box of boxes" [(ngGridItem)]="box.config">
