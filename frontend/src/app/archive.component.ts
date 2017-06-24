@@ -16,17 +16,16 @@ interface Box {
     selector: 'lol-archive',
     styles: [`
         .search {
-            font-size: 25px;
             font-weight: bold;
             margin-right: 50px;
             margin-top: 20px;
             text-align: right;
         }
         .search input {
-            font-size: 25px;
+            max-width: 75%;
         }
-        .archive {
 
+        .archive {
             margin-top: 20px;
         }
         .archive-item {
@@ -61,10 +60,10 @@ interface Box {
         }
     `],
     template:`
-        <div class="search">
+        <div class="search title">
             <label>
                 Search
-               <input type="text" [value]="searchText" (keyup.enter)="setSearch()" (input)="searchText = $event.target.value"/>
+               <input class="title" type="text" [value]="searchText" (keyup.enter)="setSearch()" (input)="searchText = $event.target.value"/>
             </label>
             <button (click)="setSearch()">
                 <i class="fa fa-search"></i>

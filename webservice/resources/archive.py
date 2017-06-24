@@ -24,15 +24,22 @@ class ArchiveList(Resource):
             search = ''
 
         sql = text("""
-            SELECT 'comic' AS item_type, id, posted_date FROM comic 
+            SELECT 'comic' AS item_type, id, posted_date FROM comic WHERE title LIKE :search
                 UNION 
-            SELECT 'media' AS item_type, id, posted_date FROM media
+            SELECT 'media' AS item_type, id, posted_date FROM media WHERE title LIKE :search
             ORDER BY posted_date DESC
             LIMIT :limit 
             OFFSET :offset
         """)
 
-        result = db.engine.execute(sql, {'limit': int(limit), 'offset': int(offset)})
+        result = db.engine.execute(
+            sql,
+            {
+                'search': '%' + search + '%',
+                'limit': int(limit),
+                'offset': int(offset)
+            }
+        )
         items = []
         for row in result:
             data = None
