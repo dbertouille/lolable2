@@ -8,10 +8,11 @@ import { LOLService } from './lol.service';
     styles: [`
         @media (max-width: 500px) {
             .blog-entry {
-                margin-left: 20px;
-                margin-right: 20px;
+                margin-left: 10px;
+                margin-right: 10px;
             }
         }
+
         @media (min-width: 500px) {
             .blog-entry {
                 margin-left: 50px;
@@ -27,11 +28,6 @@ import { LOLService } from './lol.service';
             padding-left: 10px;
             text-align: left;
             background-color:rgba(255, 255, 255, 0.5);
-            font-size: 2vw;
-        }
-        .blog-entry-title {
-            font-weight: bold;
-            font-size: 3vw;
         }
 
         :host >>> * {
@@ -40,16 +36,16 @@ import { LOLService } from './lol.service';
             margin-bottom: 20px;
             margin-left: auto;
             margin-right: auto;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-left: 5px;
+            padding-right: 5px;
         }
     `],
     template:`
         <div *ngIf="blogTitle && blogContent" class="blog-entry">
-            <div class="blog-entry-title">
+            <div class="title blog-entry-title">
                 {{blogTitle}}
             </div>
-            <div class="blog-entry-data" [innerHTML]="blogContent">
+            <div class="text blog-entry-data" [innerHTML]="blogContent">
             </div>
         </div>
     `,
@@ -68,8 +64,13 @@ export class BlogEntryComponent implements OnInit {
 
     @Input()
     set blog(blog) {
-        this.blogTitle = blog.title;
-        this.blogContent = this.sanitizer.bypassSecurityTrustHtml(blog.blog);
+        if (blog === undefined) {
+            this.blogTitle = undefined;
+            this.blogContent = undefined;
+        } else {
+            this.blogTitle = blog.title;
+            this.blogContent = this.sanitizer.bypassSecurityTrustHtml(blog.blog);
+        }
     }
 
     @Input()

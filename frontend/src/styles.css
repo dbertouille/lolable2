@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+.title {
+    font-weight: bold;
+}
+
+@media (max-width: 500px) {
+    .title {
+        font-size: 14px;
+    }
+
+    .text {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 500px) {
+    .title {
+        font-size: 24px;
+    }
+
+    .text {
+        font-size: 20px;
+    }
+}

@@ -91,11 +91,11 @@ import globals = require('./globals');
                     <div class="header-social">
                         <div class="header-social-item">
                             <img src="static/icons/youtube.png"/>
-                            <a href="https://www.youtube.com/channel/UC7yfCL0Xns8k2Nrpvb63Ogg">@Lolable</a>
+                            <a class="text" href="https://www.youtube.com/channel/UC7yfCL0Xns8k2Nrpvb63Ogg">@Lolable</a>
                         </div>
                         <div class="header-social-item">
                             <img src="static/icons/facebook.png"/>
-                            <a href="https://www.facebook.com/lolablecomics/">@LolableComics</a>
+                            <a class="text" href="https://www.facebook.com/lolablecomics/">@LolableComics</a>
                         </div>
                     </div>
                     <div class="header-menu">

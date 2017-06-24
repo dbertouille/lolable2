@@ -22,7 +22,6 @@ import globals = require('./globals');
         }
         .comic-title-text {
             font-weight: bold;
-            font-size: 3vw;
             margin-left: 10px;
         }
         .comic-img {
@@ -50,7 +49,6 @@ import globals = require('./globals');
             cursor: pointer;
             padding-left: 10px;
             padding-right: 10px;
-            font-size: 2vw;
         }
         .comic-menu-item:hover {
             font-weight: bold;
@@ -66,7 +64,7 @@ import globals = require('./globals');
     template:`
         <div *ngIf="comic" class="comic-wrapper">
             <div class="comic">
-                <div class="comic-title">
+                <div class="title comic-title">
                     <span class="comic-title-text">
                     Issue #{{comic.id}}: {{comic.title}}
                     </span>
@@ -77,36 +75,36 @@ import globals = require('./globals');
                 <div class="comic-menu">
                     <a
                     (click)="onClickFirst()"
-                    class="comic-menu-item"
+                    class="text comic-menu-item"
                     [class.disabled]="comic.id == 1">
                         First
                     </a>
-                    <span class="comic-menu-item-spacer"></span>
+                    <span class="text comic-menu-item-spacer"></span>
                     <a
                     (click)="onClickBack()"
-                    class="comic-menu-item"
+                    class="text comic-menu-item"
                     [class.disabled]="comic.id == 1">
                         Back
                     </a>
-                    <span class="comic-menu-item-spacer"></span>
-                    <a (click)="onClickRandom()" class="comic-menu-item">
+                    <span class="text comic-menu-item-spacer"></span>
+                    <a (click)="onClickRandom()" class="text comic-menu-item">
                         Random
                     </a>
-                    <span class="comic-menu-item-spacer"></span>
-                    <a class="comic-menu-item" [routerLink]="['/archive']">
+                    <span class="text comic-menu-item-spacer"></span>
+                    <a class="text comic-menu-item" [routerLink]="['/archive']">
                         Archive
                     </a>
-                    <span class="comic-menu-item-spacer"></span>
+                    <span class="text comic-menu-item-spacer"></span>
                     <a
                     (click)="onClickNext()"
-                    class="comic-menu-item"
+                    class="text comic-menu-item"
                     [class.disabled]="comic.id == latest.id">
                         Next
                     </a>
-                    <span class="comic-menu-item-spacer"></span>
+                    <span class="text comic-menu-item-spacer"></span>
                     <a
                     (click)="onClickNewest()"
-                    class="comic-menu-item"
+                    class="text comic-menu-item"
                     [class.disabled]="comic.id == latest.id">
                         Newest
                     </a>
