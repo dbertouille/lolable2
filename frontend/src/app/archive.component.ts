@@ -81,7 +81,10 @@ interface Box {
         <div class="archive" [ngGrid]="gridOptions">
             <div class="archive-item" *ngFor="let box of boxes" [(ngGridItem)]="box.config">
                 <p class="archive-item-type" [style.height.px]="titleHeight"><b>{{box.content.type}}</b><p>
-                <img class="archive-item-img" src="{{box.content.thumb}}" [style.height.px]="imageSize" [style.width.px]="imageSize" [routerLink]="[box.content.url]"/>
+                <img *ngIf="box.content.internal" class="archive-item-img" src="{{box.content.thumb}}" [style.height.px]="imageSize" [style.width.px]="imageSize" [routerLink]="[box.content.url]"/>
+                <a *ngIf="!box.content.internal" href="{{box.content.url}}">
+                    <img class="archive-item-img" src="{{box.content.thumb}}" [style.height.px]="imageSize" [style.width.px]="imageSize"/>
+                </a>
             </div>
         </div>
         <div class="archive-footer">
@@ -99,7 +102,7 @@ export class ArchiveComponent implements OnInit {
     private page = 1;
     private pageSize = 20;
     private imageSize = 0;
-    private minImageSize = 75;
+    private minImageSize = 50;
     private maxImageSize = 200;
     private titleHeight = 20;
     public boxes: Array<Box> = [];
@@ -143,6 +146,7 @@ export class ArchiveComponent implements OnInit {
                         name: "Issue #" + archive.comic.id + ": " + archive.comic.title,
                         thumb: this.wsurl + '/static/comics/comic' + this.pad(archive.comic.id, 3) + '.jpg',
                         url: "/comic/" + archive.comic.id,
+                        internal: true,
                     }
                 } else if (archive.item_type === "media") {
                     content ={
@@ -150,6 +154,7 @@ export class ArchiveComponent implements OnInit {
                         name: archive.media.title,
                         thumb: archive.media.thumb_url,
                         url: archive.media.url,
+                        internal: false,
                     }
                 }
                 this.boxes.push({
