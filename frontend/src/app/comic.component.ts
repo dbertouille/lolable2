@@ -16,8 +16,7 @@ import globals = require('./globals');
             margin-top: 20px;
         }
         .comic {
-            width: 100%;
-            max-width: 900px;
+            width: 90%;
             margin: auto;
         }
         .comic-title-text {
@@ -26,9 +25,6 @@ import globals = require('./globals');
         }
         .comic-img {
             width: 100%;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
             display: block;
             border: solid black 2px;
         }

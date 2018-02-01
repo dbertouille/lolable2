@@ -1,12 +1,11 @@
 #!/bin/bash
 
-KEYPATH=
-USER=
+source secrets.sh
 
 cd ../../frontend
 
-#rm -fr dist
-#ng build --prod
+rm -fr dist
+ng build --prod
 
 ssh -i $KEYPATH -tt $USER@lolable.com << EOF
 rm -fr /tmp/lolbuild

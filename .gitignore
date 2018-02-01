@@ -8,8 +8,11 @@ frontend/node_modules
 frontend/typings
 frontend/build
 frontend/config.properties
+frontend/dist
 
 webservice/lolws.cfg
 webservice/static
 webservice/test.db
 webservice/config.properties
+
+ops/deploy/secrets.sh
