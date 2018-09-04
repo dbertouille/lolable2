@@ -13,21 +13,37 @@ import globals = require('./globals');
     selector: 'lol-comic',
     styles: [`
         .comic-wrapper {
-            margin-top: 20px;
+            margin: auto;
+            width: 100%;
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: center;
         }
         .comic {
-            width: 90%;
-            margin: auto;
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+        }
+        .comic-title {
+            text-align: center;
         }
         .comic-title-text {
             font-weight: bold;
             margin-left: 10px;
         }
-        .comic-img {
-            width: 100%;
-            display: block;
-            border: solid black 2px;
+        .comic div {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
         }
+
+        .comic-img {
+            align-self: center;
+            border: solid black 2px;
+            max-height: 75vh;
+        }
+        
         .comic-menu {
             background-color: black;
             color: white;
@@ -58,13 +74,14 @@ import globals = require('./globals');
         }
     `],
     template:`
+        <div class="title comic-title">
+            <span class="comic-title-text">
+            Issue #{{comic.id}}: {{comic.title}}
+            </span>
+        </div>
         <div *ngIf="comic" class="comic-wrapper">
+
             <div class="comic">
-                <div class="title comic-title">
-                    <span class="comic-title-text">
-                    Issue #{{comic.id}}: {{comic.title}}
-                    </span>
-                </div>
                 <div class="comic-img-wrapper">
                     <img class="comic-img" src="{{wsurl + '/static/comics/comic' + pad(comic.id, 3) + '.jpg'}}"/>
                 </div>
@@ -105,9 +122,9 @@ import globals = require('./globals');
                         Newest
                     </a>
                 </div>
+                <lol-blog-entry [selectedComic]="comic"></lol-blog-entry>
             </div>
             <div style="height:10px;"></div>
-            <lol-blog-entry [selectedComic]="comic"></lol-blog-entry>
         </div>
 
     `,
