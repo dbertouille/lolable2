@@ -74,7 +74,7 @@ import globals = require('./globals');
         }
     `],
     template:`
-        <div class="title comic-title">
+        <div *ngIf="comic" class="title comic-title">
             <span class="comic-title-text">
             Issue #{{comic.id}}: {{comic.title}}
             </span>
