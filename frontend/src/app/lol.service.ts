@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
-import globals = require('./globals');
+import * as globals from './globals';
 
 @Injectable()
 export class LOLService {

@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 
-import { BlogEntryComponent } from './blog-entry.component';
 
 import { LOLService } from './lol.service';
 
-import globals = require('./globals');
+import * as globals from './globals';
 
 @Component({
     selector: 'lol-blog',

@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { LOLService } from './lol.service';
 
-import globals = require('./globals');
+import * as globals from './globals';
 
 interface Box {
     content: any;

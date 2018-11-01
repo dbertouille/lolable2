@@ -3,8 +3,6 @@ import { OnInit } from '@angular/core';
 
 import { LOLService } from './lol.service';
 
-import globals = require('./globals');
-
 @Component({
     selector: 'lol-about',
     template:`

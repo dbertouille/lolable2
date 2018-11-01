@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 
-import { NgGridModule } from 'angular2-grid';
-
 import { LOLService } from './lol.service';
-
-import globals = require('./globals');
 
 interface Box {
     podcast: any;

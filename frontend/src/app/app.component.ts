@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 
-import { AboutComponent } from './about.component';
-import { BlogComponent } from './blog.component';
-import { ComicComponent } from './comic.component';
-
 import { LOLService } from './lol.service';
-
-import globals = require('./globals');
 
 @Component({
     selector: 'lol-app',
