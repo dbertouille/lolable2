@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes }  from '@angular/router';
-import { MaterialModule } from '@angular/material';
-import { NgGridModule } from 'angular2-grid';
+import { NgGridModule } from 'angular4-grid';
 
 import { AboutComponent } from './about.component';
 import { AppComponent } from './app.component';
@@ -61,7 +60,6 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule,
     NgGridModule,
     RouterModule.forRoot(appRoutes),
   ],
